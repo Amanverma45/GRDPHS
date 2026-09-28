@@ -1,7 +1,17 @@
 /* =========================================================
    G.R.D PUBLIC SCHOOL - TILAWAD MAINA (M.P.)
-   Clean, Wide (98% Width), Managed Single-Line Navbar & Responsive Styles
+   Fully Responsive, Mobile-First & Desktop Optimized Styles
    ========================================================= */
+
+body, html {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+.page-wrapper {
+  overflow-x: hidden;
+  width: 100%;
+}
 
 .full-width-container {
   width: 98%;
@@ -16,6 +26,14 @@
 
 .section-padding {
   padding: 3.5rem 0;
+}
+
+/* Responsive Table Scroll Wrapper */
+.table-responsive-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 0.5rem;
 }
 
 /* ================= TOP INFO BAR ================= */
@@ -121,8 +139,8 @@
 }
 
 .brand-logo-frame {
-  width: 64px;
-  height: 64px;
+  width: 62px;
+  height: 62px;
   border-radius: 12px;
   background: #fffbeb;
   border: 2px solid #f59e0b;
@@ -145,8 +163,8 @@
 }
 
 .brand-logo-frame.mini {
-  width: 50px;
-  height: 50px;
+  width: 48px;
+  height: 48px;
 }
 
 .brand-text-block {
@@ -206,6 +224,10 @@
   background-color: #dbeafe;
 }
 
+.mobile-menu-apply-btn {
+  display: none;
+}
+
 /* Header Apply CTA */
 .btn-apply-header {
   background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
@@ -231,8 +253,8 @@
   display: none;
   background: #f1f5f9;
   border: none;
-  border-radius: 6px;
-  padding: 6px;
+  border-radius: 8px;
+  padding: 7px;
   color: #0f2b5c;
   cursor: pointer;
 }
@@ -278,6 +300,18 @@
   border-radius: 20px;
 }
 
+.pill-badge-dark {
+  display: inline-block;
+  background: #eff6ff;
+  color: #1e40af;
+  border: 1px solid #bfdbfe;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 3px 12px;
+  border-radius: 20px;
+  margin-bottom: 6px;
+}
+
 .hero-heading {
   font-size: 2.4rem;
   font-weight: 800;
@@ -316,8 +350,8 @@
   padding: 10px 14px;
 }
 
-.icon-gold { color: #fbbf24; }
-.icon-blue { color: #93c5fd; }
+.icon-gold { color: #fbbf24; flex-shrink: 0; }
+.icon-blue { color: #93c5fd; flex-shrink: 0; }
 
 .h-shift-card strong {
   display: block;
@@ -345,6 +379,7 @@
   font-size: 0.95rem;
   text-decoration: none;
   display: inline-block;
+  text-align: center;
   box-shadow: 0 4px 14px rgba(217, 119, 6, 0.35);
   transition: transform 0.2s;
 }
@@ -362,6 +397,7 @@
   font-weight: 700;
   font-size: 0.95rem;
   text-decoration: none;
+  text-align: center;
 }
 
 .btn-outline:hover {
@@ -380,8 +416,8 @@
 }
 
 .logo-highlight-circle {
-  width: 110px;
-  height: 110px;
+  width: 105px;
+  height: 105px;
   margin: 0 auto 12px;
   background: #fffbeb;
   border: 3px solid #f59e0b;
@@ -433,14 +469,14 @@
 .section-title-center {
   text-align: center;
   max-width: 750px;
-  margin: 0 auto 2.5rem;
+  margin: 0 auto 2.2rem;
 }
 
 .section-title-center h3 {
   font-size: 1.85rem;
   font-weight: 800;
   color: #0f2b5c;
-  margin: 0.5rem 0 0.4rem;
+  margin: 0.4rem 0 0.3rem;
 }
 
 .section-title-center p {
@@ -452,7 +488,7 @@
 .shifts-grid-2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+  gap: 1.8rem;
 }
 
 .shift-card-detailed {
@@ -460,7 +496,7 @@
   border: 2px solid #e2e8f0;
   padding: 2rem;
   background: #ffffff;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.03);
 }
 
 .morning-theme {
@@ -479,12 +515,13 @@
 }
 
 .shift-icon-wrap {
-  width: 52px;
-  height: 52px;
+  width: 50px;
+  height: 50px;
   border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .morning-theme .shift-icon-wrap {
@@ -554,14 +591,14 @@
 .management-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+  gap: 1.8rem;
 }
 
 .manage-card {
   background: #ffffff;
   border: 1px solid #e2e8f0;
   border-radius: 16px;
-  padding: 2.2rem;
+  padding: 2rem;
   position: relative;
   box-shadow: 0 4px 14px rgba(0,0,0,0.03);
 }
@@ -583,8 +620,8 @@
 }
 
 .manage-avatar {
-  width: 58px;
-  height: 58px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
   background: #0f2b5c;
   color: #ffffff;
@@ -593,7 +630,7 @@
   justify-content: center;
   font-size: 1.2rem;
   font-weight: 800;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .principal-avatar {
@@ -611,7 +648,7 @@
   font-size: 0.88rem;
   font-weight: 700;
   color: #d97706;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .manage-msg {
@@ -642,8 +679,8 @@
 }
 
 .feat-icon {
-  width: 48px;
-  height: 48px;
+  width: 46px;
+  height: 46px;
   background: #eff6ff;
   color: #1e40af;
   border-radius: 12px;
@@ -671,8 +708,8 @@
   background: #ffffff;
   border: 1px solid #cbd5e1;
   border-radius: 16px;
-  padding: 2.2rem;
-  margin-bottom: 2.5rem;
+  padding: 2rem;
+  margin-bottom: 2.2rem;
   box-shadow: 0 6px 20px rgba(0,0,0,0.04);
 }
 
@@ -738,16 +775,18 @@
 
 .simple-table th {
   background: #f1f5f9;
-  padding: 11px 14px;
+  padding: 10px 12px;
   text-align: left;
   color: #334155;
   font-weight: 700;
   border-bottom: 1px solid #cbd5e1;
+  white-space: nowrap;
 }
 
 .simple-table td {
-  padding: 11px 14px;
+  padding: 10px 12px;
   border-bottom: 1px solid #f1f5f9;
+  white-space: nowrap;
 }
 
 .simple-table tr.active-row {
@@ -761,7 +800,7 @@
 }
 
 .shift-tag {
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   background: #f8fafc;
   border: 1px solid #e2e8f0;
   padding: 2px 6px;
@@ -817,12 +856,13 @@
   font-size: 1.8rem;
   background: #ffffff;
   border: 1px solid #cbd5e1;
-  width: 48px;
-  height: 48px;
+  width: 46px;
+  height: 46px;
   border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .sc-header h5 {
@@ -913,8 +953,8 @@
 
 .phone-body {
   background: #f1f5f9;
-  padding: 16px;
-  min-height: 150px;
+  padding: 14px;
+  min-height: 140px;
 }
 
 .phone-msg {
@@ -977,8 +1017,8 @@
 }
 
 .ms-logo {
-  width: 58px;
-  height: 58px;
+  width: 54px;
+  height: 54px;
   object-fit: contain;
 }
 
@@ -1022,6 +1062,7 @@
   padding: 9px 12px;
   border: 1px solid #cbd5e1;
   text-align: left;
+  white-space: nowrap;
 }
 
 .marks-table th {
@@ -1037,7 +1078,7 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
   text-align: center;
-  margin-top: 2.5rem;
+  margin-top: 2.2rem;
   font-size: 0.82rem;
   color: #475569;
 }
@@ -1195,8 +1236,8 @@
 }
 
 .footer-logo {
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   object-fit: contain;
 }
 
@@ -1227,24 +1268,69 @@
   color: #94a3b8;
 }
 
-/* ================= RESPONSIVE DESIGN ================= */
-@media (max-width: 1080px) {
-  .nav-menu {
-    gap: 2px;
+/* ================= MOBILE OPTIMIZATION (< 868px) ================= */
+@media (max-width: 868px) {
+  .full-width-container {
+    width: 95%;
+    padding: 0 0.4rem;
   }
-  .nav-link {
-    padding: 6px 8px;
+
+  .section-padding {
+    padding: 2.2rem 0;
+  }
+
+  /* Compact Top Bar on Mobile */
+  .top-info-bar {
+    padding: 5px 0;
+    font-size: 0.75rem;
+  }
+
+  .desktop-only-inline {
+    display: none !important;
+  }
+
+  .top-flex {
+    justify-content: space-between;
+    gap: 6px;
+  }
+
+  .location-tag {
+    font-size: 0.75rem;
+  }
+
+  .phone-item {
+    font-size: 0.75rem;
+  }
+
+  /* Sleek Compact Header on Mobile */
+  .main-header {
+    padding: 8px 0;
+  }
+
+  .brand-logo-frame {
+    width: 46px;
+    height: 46px;
+    border-radius: 10px;
+    padding: 2px;
+  }
+
+  .brand-title-grd {
+    font-size: 1.15rem;
+  }
+
+  .brand-title-public {
     font-size: 0.85rem;
   }
-}
 
-@media (max-width: 868px) {
-  .hero-grid, .management-grid, .features-grid-simple, .demo-flex-layout, .sms-grid, .fees-uniform-grid, .footer-grid-simple, .shifts-grid-2 {
-    grid-template-columns: 1fr;
+  .mobile-menu-toggle {
+    display: block;
   }
-  .form-grid-2 {
-    grid-template-columns: 1fr;
+
+  .btn-apply-header {
+    display: none;
   }
+
+  /* Full-width Mobile Dropdown Menu */
   .nav-menu {
     display: none;
     position: absolute;
@@ -1254,16 +1340,159 @@
     background: #ffffff;
     flex-direction: column;
     padding: 1rem;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
     border-top: 1px solid #e2e8f0;
+    gap: 4px;
   }
+
   .nav-menu.open {
     display: flex;
   }
-  .mobile-menu-toggle {
-    display: block;
+
+  .nav-link {
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 0.95rem;
   }
-  .btn-apply-header {
-    display: none;
+
+  .mobile-menu-apply-btn {
+    display: block;
+    width: 100%;
+    background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+    color: #ffffff;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 8px;
+  }
+
+  /* Hero Section on Mobile */
+  .hero-section {
+    padding: 2rem 0;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 1.8rem;
+  }
+
+  .hero-heading {
+    font-size: 1.55rem;
+    line-height: 1.25;
+    margin-bottom: 0.8rem;
+  }
+
+  .hero-desc {
+    font-size: 0.9rem;
+    line-height: 1.55;
+    margin-bottom: 1.2rem;
+  }
+
+  .hero-shifts-summary {
+    gap: 8px;
+    margin-bottom: 1.4rem;
+  }
+
+  .h-shift-card {
+    padding: 8px 10px;
+    gap: 10px;
+  }
+
+  .h-shift-card strong {
+    font-size: 0.85rem;
+  }
+
+  .h-shift-card span {
+    font-size: 0.78rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .btn-primary, .btn-outline {
+    width: 100%;
+    padding: 11px;
+    font-size: 0.9rem;
+  }
+
+  .logo-card {
+    padding: 1.5rem 1rem;
+    border-radius: 16px;
+  }
+
+  .logo-highlight-circle {
+    width: 85px;
+    height: 85px;
+    border-radius: 16px;
+  }
+
+  .card-brand-title {
+    font-size: 1.15rem;
+  }
+
+  .card-highlights-list {
+    padding: 0.8rem;
+    font-size: 0.82rem;
+  }
+
+  /* Section Titles on Mobile */
+  .section-title-center {
+    margin-bottom: 1.5rem;
+  }
+
+  .section-title-center h3 {
+    font-size: 1.35rem;
+  }
+
+  .section-title-center p {
+    font-size: 0.85rem;
+  }
+
+  /* Shifts, Management, Features, Demos, Fees Grid on Mobile */
+  .shifts-grid-2,
+  .management-grid,
+  .features-grid-simple,
+  .demo-flex-layout,
+  .sms-grid,
+  .fees-uniform-grid,
+  .footer-grid-simple {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
+  .shift-card-detailed,
+  .manage-card,
+  .feat-box,
+  .demo-block,
+  .card-box,
+  .form-container-box {
+    padding: 1.2rem;
+    border-radius: 14px;
+  }
+
+  .form-grid-2 {
+    grid-template-columns: 1fr;
+    gap: 0.9rem;
+  }
+
+  .ms-student-info, .ms-signatures {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .sms-radio-group label {
+    font-size: 0.82rem;
+    padding: 8px 10px;
+  }
+
+  .btn-send-sms {
+    width: 100%;
+    justify-content: center;
   }
 }

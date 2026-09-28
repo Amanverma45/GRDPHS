@@ -137,20 +137,20 @@ export default function App() {
 
   return (
     <div className="page-wrapper">
-      {/* 1. TOP INFORMATION BAR */}
+      {/* 1. TOP INFORMATION BAR (Compact & Clean on Mobile) */}
       <div className="top-info-bar">
         <div className="full-width-container top-flex">
           <div className="top-left-info">
             <span className="location-tag">📍 Tilawad Maina (M.P.)</span>
-            <span className="divider-dot">•</span>
-            <span className="medium-badge">English & Hindi Medium (LKG to 10th) | Hindi Medium (11th & 12th)</span>
+            <span className="desktop-only-inline divider-dot">•</span>
+            <span className="desktop-only-inline medium-badge">English & Hindi Medium (LKG to 10th) | Hindi Medium (11th & 12th)</span>
           </div>
           <div className="top-right-info">
-            <span className="shift-pill morning">
-              <Sunrise size={13} /> 1st Shift (7th to 12th): <strong>7:30 AM – 12:30 PM</strong>
+            <span className="desktop-only-inline shift-pill morning">
+              <Sunrise size={13} /> 1st Shift (7th-12th): <strong>7:30 AM–12:30 PM</strong>
             </span>
-            <span className="shift-pill day">
-              <Sun size={13} /> 2nd Shift (LKG to 6th): <strong>10:00 AM – 5:00 PM</strong>
+            <span className="desktop-only-inline shift-pill day">
+              <Sun size={13} /> 2nd Shift (LKG-6th): <strong>10:00 AM–5:00 PM</strong>
             </span>
             <span className="phone-item">
               <Phone size={13} /> +91 98XXX XXXXX
@@ -183,14 +183,19 @@ export default function App() {
             <a href="#fees" className="nav-link" onClick={() => setNavOpen(false)}>Fees & Uniform</a>
             <a href="#admission" className="nav-link" onClick={() => setNavOpen(false)}>Admission</a>
             <a href="#contact" className="nav-link" onClick={() => setNavOpen(false)}>Contact</a>
+            
+            {/* Mobile Apply Button inside Menu */}
+            <a href="#admission" className="mobile-menu-apply-btn" onClick={() => setNavOpen(false)}>
+              Apply for Admission (2026-27)
+            </a>
           </nav>
 
-          {/* Header Action Button */}
+          {/* Desktop Header Action Button */}
           <a href="#admission" className="btn-apply-header">Online Admission</a>
 
           {/* Mobile Hamburger Toggle */}
           <button className="mobile-menu-toggle" onClick={() => setNavOpen(!navOpen)} aria-label="Menu">
-            {navOpen ? <X size={24} /> : <Menu size={24} />}
+            {navOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
       </header>
@@ -200,7 +205,7 @@ export default function App() {
         <div className="full-width-container hero-grid">
           <div className="hero-left">
             <div className="badge-row">
-              <span className="pill-badge">Official Website Concept • Tilawad Maina</span>
+              <span className="pill-badge">Tilawad Maina (M.P.)</span>
               <span className="pill-badge-gold">Session 2026-2027</span>
             </div>
 
@@ -209,32 +214,31 @@ export default function App() {
             </h2>
 
             <p className="hero-desc">
-              Located in <strong>Tilawad Maina (M.P.)</strong>, under the dedicated leadership of 
-              <strong> Director Shri Rajendra Verma</strong> and <strong>Principal Shri Mahesh Verma</strong>. 
-              Offering English & Hindi Medium education with two organized shifts for better learning.
+              Under the dedicated leadership of <strong>Director Shri Rajendra Verma</strong> and <strong>Principal Shri Mahesh Verma</strong>. 
+              Offering English & Hindi Medium education with two organized shifts.
             </p>
 
-            {/* Shift & Medium Quick Summary Cards */}
+            {/* Quick Shift Badges */}
             <div className="hero-shifts-summary">
               <div className="h-shift-card">
-                <Sunrise size={20} className="icon-gold" />
+                <Sunrise size={18} className="icon-gold" />
                 <div>
-                  <strong>1st Shift (Morning): 7:30 AM – 12:30 PM</strong>
-                  <span>For Senior Classes: 7th, 8th, 9th, 10th, 11th & 12th</span>
+                  <strong>1st Shift (7:30 AM – 12:30 PM):</strong>
+                  <span>Class 7th to 12th</span>
                 </div>
               </div>
               <div className="h-shift-card">
-                <Sun size={20} className="icon-blue" />
+                <Sun size={18} className="icon-blue" />
                 <div>
-                  <strong>2nd Shift (Day): 10:00 AM – 5:00 PM</strong>
-                  <span>For Junior Classes: LKG, UKG, 1st, 2nd, 3rd, 4th, 5th & 6th</span>
+                  <strong>2nd Shift (10:00 AM – 5:00 PM):</strong>
+                  <span>Class LKG to 6th</span>
                 </div>
               </div>
             </div>
 
             <div className="hero-actions">
-              <a href="#demo" className="btn-primary">Explore Live Features Demo 👇</a>
-              <a href="#admission" className="btn-outline">Online Admission Form</a>
+              <a href="#demo" className="btn-primary">Explore Live Demo 👇</a>
+              <a href="#admission" className="btn-outline">Admission Form</a>
             </div>
           </div>
 
@@ -247,9 +251,9 @@ export default function App() {
               <p className="card-brand-location">Tilawad Maina, Madhya Pradesh</p>
               
               <div className="card-highlights-list">
-                <div className="c-item">✓ <strong>LKG to 10th:</strong> Both English & Hindi Medium</div>
+                <div className="c-item">✓ <strong>LKG to 10th:</strong> English & Hindi Medium</div>
                 <div className="c-item">✓ <strong>11th & 12th:</strong> Hindi Medium</div>
-                <div className="c-item">✓ <strong>Smart Portal:</strong> SMS Alerts, Student Database & Results</div>
+                <div className="c-item">✓ <strong>Smart Portal:</strong> SMS Alerts, Records & Results</div>
               </div>
             </div>
           </div>
@@ -260,16 +264,16 @@ export default function App() {
       <section id="shifts-medium" className="section-padding bg-white">
         <div className="full-width-container">
           <div className="section-title-center">
-            <span className="pill-badge">Academic Structure</span>
-            <h3>School Timings, Shifts & Medium Details</h3>
-            <p>Well-organized shifts to ensure personal attention and quality learning for every student</p>
+            <span className="pill-badge-dark">Academic Structure</span>
+            <h3>School Timings, Shifts & Medium</h3>
+            <p>Two well-organized shifts to ensure personal attention for every student</p>
           </div>
 
           <div className="shifts-grid-2">
             {/* Shift 1 */}
             <div className="shift-card-detailed morning-theme">
               <div className="shift-header">
-                <div className="shift-icon-wrap"><Sunrise size={28} /></div>
+                <div className="shift-icon-wrap"><Sunrise size={26} /></div>
                 <div>
                   <span className="shift-sub-title">Morning Shift</span>
                   <h4>1st Shift: 7:30 AM to 12:30 PM</h4>
@@ -277,11 +281,11 @@ export default function App() {
               </div>
               <div className="shift-body">
                 <div className="info-badge-row">
-                  <span className="tag-classes">Applicable Classes: 7th to 12th</span>
+                  <span className="tag-classes">Classes: 7th to 12th</span>
                 </div>
                 <ul className="shift-points">
-                  <li><strong>Class 7th to 10th:</strong> Available in <strong>Both English & Hindi Medium</strong></li>
-                  <li><strong>Class 11th & 12th:</strong> Available in <strong>Hindi Medium</strong></li>
+                  <li><strong>Class 7th to 10th:</strong> Both English & Hindi Medium</li>
+                  <li><strong>Class 11th & 12th:</strong> Hindi Medium</li>
                   <li>Dedicated morning hours for high-focus academics and science practicals.</li>
                 </ul>
               </div>
@@ -290,7 +294,7 @@ export default function App() {
             {/* Shift 2 */}
             <div className="shift-card-detailed day-theme">
               <div className="shift-header">
-                <div className="shift-icon-wrap"><Sun size={28} /></div>
+                <div className="shift-icon-wrap"><Sun size={26} /></div>
                 <div>
                   <span className="shift-sub-title">Day Shift</span>
                   <h4>2nd Shift: 10:00 AM to 5:00 PM</h4>
@@ -298,10 +302,10 @@ export default function App() {
               </div>
               <div className="shift-body">
                 <div className="info-badge-row">
-                  <span className="tag-classes">Applicable Classes: LKG to 6th</span>
+                  <span className="tag-classes">Classes: LKG to 6th</span>
                 </div>
                 <ul className="shift-points">
-                  <li><strong>Class LKG & UKG (Pre-Primary):</strong> Both English & Hindi Medium</li>
+                  <li><strong>LKG & UKG (Pre-Primary):</strong> Both English & Hindi Medium</li>
                   <li><strong>Class 1st to 6th:</strong> Both English & Hindi Medium</li>
                   <li>Includes foundational learning, games, arts, and interactive activities.</li>
                 </ul>
@@ -315,6 +319,7 @@ export default function App() {
       <section id="management" className="section-padding">
         <div className="full-width-container">
           <div className="section-title-center">
+            <span className="pill-badge-dark">Leadership</span>
             <h3>School Leadership & Management</h3>
             <p>Guiding principles of G.R.D Public School, Tilawad Maina</p>
           </div>
@@ -349,43 +354,44 @@ export default function App() {
       <section id="features" className="section-padding bg-white">
         <div className="full-width-container">
           <div className="section-title-center">
-            <h3>Proposed Features for G.R.D Public School Portal</h3>
+            <span className="pill-badge-dark">Digital Capabilities</span>
+            <h3>Proposed Features for School Portal</h3>
             <p>Simple and powerful digital features to manage the school smoothly</p>
           </div>
 
           <div className="features-grid-simple">
             <div className="feat-box">
-              <div className="feat-icon"><GraduationCap size={24} /></div>
+              <div className="feat-icon"><GraduationCap size={22} /></div>
               <h4>1. Online Admission Form</h4>
               <p>Parents can easily register student details and select Medium (English/Hindi) and Class.</p>
             </div>
 
             <div className="feat-box">
-              <div className="feat-icon"><Users size={24} /></div>
+              <div className="feat-icon"><Users size={22} /></div>
               <h4>2. Class & Roll No. Search</h4>
               <p>Teachers can lookup any student in seconds by class, medium, shift, and roll number.</p>
             </div>
 
             <div className="feat-box">
-              <div className="feat-icon"><MessageSquare size={24} /></div>
+              <div className="feat-icon"><MessageSquare size={22} /></div>
               <h4>3. SMS & WhatsApp Alerts</h4>
               <p>Instant automated notification to parents when attendance is marked or notices are published.</p>
             </div>
 
             <div className="feat-box">
-              <div className="feat-icon"><Award size={24} /></div>
+              <div className="feat-icon"><Award size={22} /></div>
               <h4>4. Online Result Card</h4>
-              <p>Parents can enter roll number anytime to view and print official quarterly and final report cards.</p>
+              <p>Parents can enter roll number anytime to view and print official report cards.</p>
             </div>
 
             <div className="feat-box">
-              <div className="feat-icon"><CreditCard size={24} /></div>
+              <div className="feat-icon"><CreditCard size={22} /></div>
               <h4>5. Fee & Bus Structure</h4>
-              <p>Clear quarterly installment fees and bus/van route charges for Tilawad Maina and surrounding villages.</p>
+              <p>Clear quarterly installment fees and bus/van route charges for Tilawad Maina and nearby areas.</p>
             </div>
 
             <div className="feat-box">
-              <div className="feat-icon"><Shirt size={24} /></div>
+              <div className="feat-icon"><Shirt size={22} /></div>
               <h4>6. Uniform & Guidelines</h4>
               <p>Complete dress code instructions for regular weekdays and Wednesday/Saturday sports dress.</p>
             </div>
@@ -397,20 +403,20 @@ export default function App() {
       <section id="demo" className="section-padding">
         <div className="full-width-container">
           <div className="section-title-center">
-            <span className="pill-badge">Interactive Live Demo</span>
+            <span className="pill-badge-dark">Interactive Prototypes</span>
             <h3>Test How The School System Works</h3>
-            <p>Click and test the live working prototypes below:</p>
+            <p>Click and test the live working demos below:</p>
           </div>
 
           {/* DEMO 1: Student Search */}
           <div className="demo-block">
             <div className="demo-header">
-              <h4>Demo 1: Student Directory (Class, Medium & Roll No.)</h4>
-              <span className="tag-info">Teacher / Admin System</span>
+              <h4>Demo 1: Student Directory (Class & Roll No.)</h4>
+              <span className="tag-info">Admin System</span>
             </div>
 
             <div className="demo-filter-row">
-              <label>Filter by Class:</label>
+              <label>Filter Class:</label>
               <select value={selectedClass} onChange={(e) => setSelectedClass(e.target.value)} className="simple-select">
                 <option value="All">All Classes (LKG to 12th)</option>
                 <option value="Class 5th">Class 5th (Day Shift)</option>
@@ -420,15 +426,15 @@ export default function App() {
             </div>
 
             <div className="demo-flex-layout">
-              {/* Table */}
-              <div className="table-col">
+              {/* Table with responsive horizontal scroll */}
+              <div className="table-col table-responsive-wrapper">
                 <table className="simple-table">
                   <thead>
                     <tr>
                       <th>Roll No</th>
                       <th>Student Name</th>
-                      <th>Class & Medium</th>
-                      <th>Shift Timing</th>
+                      <th>Class</th>
+                      <th>Shift</th>
                       <th>Attendance</th>
                       <th>Action</th>
                     </tr>
@@ -438,11 +444,11 @@ export default function App() {
                       <tr key={st.rollNo} className={selectedStudent.rollNo === st.rollNo ? 'active-row' : ''}>
                         <td><strong>{st.rollNo}</strong></td>
                         <td>{st.name}</td>
-                        <td>{st.class} • <span className="text-muted-tag">{st.medium}</span></td>
+                        <td>{st.class} ({st.medium.split(' ')[0]})</td>
                         <td><span className="shift-tag">{st.shift.split('(')[0]}</span></td>
                         <td><span className="tag-green">{st.attendance}</span></td>
                         <td>
-                          <button className="btn-table" onClick={() => setSelectedStudent(st)}>View Card</button>
+                          <button className="btn-table" onClick={() => setSelectedStudent(st)}>View</button>
                         </td>
                       </tr>
                     ))}
@@ -465,7 +471,7 @@ export default function App() {
                     <p><strong>Father's Name:</strong> {selectedStudent.fatherName}</p>
                     <p><strong>Parent Mobile:</strong> {selectedStudent.phone}</p>
                     <p><strong>Today's Status:</strong> <span className="tag-green">✓ {selectedStudent.status}</span></p>
-                    <p><strong>Exam Total:</strong> {selectedStudent.total}</p>
+                    <p><strong>Exam Score:</strong> {selectedStudent.total}</p>
                     <p><strong>Grade:</strong> <span className="tag-blue">{selectedStudent.grade}</span></p>
                   </div>
                 </div>
@@ -476,13 +482,13 @@ export default function App() {
           {/* DEMO 2: SMS Simulator */}
           <div className="demo-block">
             <div className="demo-header">
-              <h4>Demo 2: Instant Parent SMS & WhatsApp Notification</h4>
-              <span className="tag-info">Automated Parent Alerts</span>
+              <h4>Demo 2: Instant Parent WhatsApp & SMS Alert</h4>
+              <span className="tag-info">Automated Alerts</span>
             </div>
 
             <div className="sms-grid">
               <div className="sms-controls">
-                <p>Send an instant demo message to <strong>{selectedStudent.fatherName}</strong> (Parent of {selectedStudent.name}):</p>
+                <p>Send a test notification to <strong>{selectedStudent.fatherName}</strong> ({selectedStudent.name}'s Guardian):</p>
                 
                 <div className="sms-radio-group">
                   <label>
@@ -500,12 +506,12 @@ export default function App() {
                 </div>
 
                 <button className="btn-send-sms" onClick={handleSendSms}>
-                  <Send size={16} /> Send Test WhatsApp & SMS Alert
+                  <Send size={16} /> Send Test Alert
                 </button>
 
                 {smsSent && (
                   <div className="sms-sent-banner">
-                    ✅ <strong>Alert Delivered!</strong> Message sent to {selectedStudent.phone} ({selectedStudent.name}'s Guardian).
+                    ✅ <strong>Alert Delivered!</strong> Message sent to {selectedStudent.phone}.
                   </div>
                 )}
               </div>
@@ -517,17 +523,17 @@ export default function App() {
                     <div className="phone-msg">
                       {smsType === 'attendance' && (
                         <p>
-                          <strong>[G.R.D Public School]</strong> Dear Parent, your child <strong>{selectedStudent.name}</strong> ({selectedStudent.class}, {selectedStudent.medium}) has arrived safely and is marked <strong>PRESENT</strong> today. Shift: {selectedStudent.shift.split('(')[1] || '7:30 AM'}
+                          <strong>[G.R.D Public School]</strong> Dear Parent, your child <strong>{selectedStudent.name}</strong> ({selectedStudent.class}) is marked <strong>PRESENT</strong> today at school.
                         </p>
                       )}
                       {smsType === 'result' && (
                         <p>
-                          <strong>[G.R.D Public School]</strong> Dear Parent, Exam Results for <strong>{selectedStudent.name}</strong> are declared. Total: <strong>{selectedStudent.total}</strong>. Marksheet available on school website.
+                          <strong>[G.R.D Public School]</strong> Dear Parent, Exam Results for <strong>{selectedStudent.name}</strong> are declared. Total: <strong>{selectedStudent.total}</strong>. Check marksheet online.
                         </p>
                       )}
                       {smsType === 'timing' && (
                         <p>
-                          <strong>[G.R.D Public School Notice]</strong> Attention Parents: 1st Shift (7th-12th) starts at 7:30 AM. 2nd Shift (LKG-6th) starts at 10:00 AM. Please ensure on-time arrival. - Director & Principal Office.
+                          <strong>[G.R.D Public School Notice]</strong> 1st Shift (7th-12th) starts at 7:30 AM. 2nd Shift (LKG-6th) starts at 10:00 AM. - Management.
                         </p>
                       )}
                       <small className="msg-time">Delivered ✓✓</small>
@@ -542,11 +548,11 @@ export default function App() {
           <div className="demo-block">
             <div className="demo-header">
               <h4>Demo 3: Online Marksheet Generator</h4>
-              <span className="tag-info">Parent Portal Result Lookup</span>
+              <span className="tag-info">Parent Portal</span>
             </div>
 
             <form onSubmit={handleResultSearch} className="result-form-row">
-              <label>Enter Student Roll Number:</label>
+              <label>Roll Number:</label>
               <input 
                 type="text" 
                 value={searchRoll} 
@@ -565,7 +571,7 @@ export default function App() {
                 <div>
                   <h4>G.R.D PUBLIC SCHOOL</h4>
                   <p>Tilawad Maina, Madhya Pradesh</p>
-                  <span className="ms-sub">Progress Report Card (Session 2026-2027)</span>
+                  <span className="ms-sub">Progress Report Card (2026-2027)</span>
                 </div>
               </div>
 
@@ -573,35 +579,37 @@ export default function App() {
                 <div><strong>Student Name:</strong> {foundResult.name}</div>
                 <div><strong>Roll No:</strong> {foundResult.rollNo}</div>
                 <div><strong>Father's Name:</strong> {foundResult.fatherName}</div>
-                <div><strong>Class & Medium:</strong> {foundResult.class} ({foundResult.medium})</div>
+                <div><strong>Class:</strong> {foundResult.class} ({foundResult.medium})</div>
               </div>
 
-              <table className="marks-table">
-                <thead>
-                  <tr>
-                    <th>Subject</th>
-                    <th>Max Marks</th>
-                    <th>Marks Obtained</th>
-                    <th>Result Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {Object.entries(foundResult.marks).map(([subj, score]) => (
-                    <tr key={subj}>
-                      <td><strong>{subj}</strong></td>
-                      <td>100</td>
-                      <td>{score}</td>
-                      <td><span className="tag-green">Pass</span></td>
+              <div className="table-responsive-wrapper">
+                <table className="marks-table">
+                  <thead>
+                    <tr>
+                      <th>Subject</th>
+                      <th>Max Marks</th>
+                      <th>Marks Obtained</th>
+                      <th>Result Status</th>
                     </tr>
-                  ))}
-                  <tr className="total-row">
-                    <td><strong>TOTAL RESULT</strong></td>
-                    <td><strong>500</strong></td>
-                    <td><strong>{foundResult.total}</strong></td>
-                    <td><strong className="tag-blue">{foundResult.grade}</strong></td>
-                  </tr>
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    {Object.entries(foundResult.marks).map(([subj, score]) => (
+                      <tr key={subj}>
+                        <td><strong>{subj}</strong></td>
+                        <td>100</td>
+                        <td>{score}</td>
+                        <td><span className="tag-green">Pass</span></td>
+                      </tr>
+                    ))}
+                    <tr className="total-row">
+                      <td><strong>TOTAL RESULT</strong></td>
+                      <td><strong>500</strong></td>
+                      <td><strong>{foundResult.total}</strong></td>
+                      <td><strong className="tag-blue">{foundResult.grade}</strong></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
 
               <div className="ms-signatures">
                 <div>
@@ -626,6 +634,7 @@ export default function App() {
       <section id="fees" className="section-padding bg-white">
         <div className="full-width-container">
           <div className="section-title-center">
+            <span className="pill-badge-dark">Information</span>
             <h3>Fee Schedule & Uniform Guidelines</h3>
             <p>Transparent fee structure and uniform rules for parents</p>
           </div>
@@ -634,44 +643,46 @@ export default function App() {
             {/* Fees Table */}
             <div className="card-box">
               <h4 className="box-title"><CreditCard size={20} /> Fee Structure (Annual & Quarterly)</h4>
-              <table className="simple-table">
-                <thead>
-                  <tr>
-                    <th>Class Group</th>
-                    <th>Shift</th>
-                    <th>Annual Fee</th>
-                    <th>Quarterly (4 Terms)</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>LKG to UKG</td>
-                    <td>2nd Shift (10 AM - 5 PM)</td>
-                    <td>₹8,000</td>
-                    <td>₹2,000 / term</td>
-                  </tr>
-                  <tr>
-                    <td>Class 1st to 6th</td>
-                    <td>2nd Shift (10 AM - 5 PM)</td>
-                    <td>₹10,000</td>
-                    <td>₹2,500 / term</td>
-                  </tr>
-                  <tr>
-                    <td>Class 7th to 10th</td>
-                    <td>1st Shift (7:30 AM - 12:30 PM)</td>
-                    <td>₹12,500</td>
-                    <td>₹3,125 / term</td>
-                  </tr>
-                  <tr>
-                    <td>Class 11th & 12th (Hindi Med.)</td>
-                    <td>1st Shift (7:30 AM - 12:30 PM)</td>
-                    <td>₹15,000</td>
-                    <td>₹3,750 / term</td>
-                  </tr>
-                </tbody>
-              </table>
+              <div className="table-responsive-wrapper">
+                <table className="simple-table">
+                  <thead>
+                    <tr>
+                      <th>Class Group</th>
+                      <th>Shift</th>
+                      <th>Annual Fee</th>
+                      <th>Quarterly</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>LKG to UKG</td>
+                      <td>2nd Shift (10 AM - 5 PM)</td>
+                      <td>₹8,000</td>
+                      <td>₹2,000 / term</td>
+                    </tr>
+                    <tr>
+                      <td>Class 1st to 6th</td>
+                      <td>2nd Shift (10 AM - 5 PM)</td>
+                      <td>₹10,000</td>
+                      <td>₹2,500 / term</td>
+                    </tr>
+                    <tr>
+                      <td>Class 7th to 10th</td>
+                      <td>1st Shift (7:30 AM - 12:30 PM)</td>
+                      <td>₹12,500</td>
+                      <td>₹3,125 / term</td>
+                    </tr>
+                    <tr>
+                      <td>Class 11th & 12th</td>
+                      <td>1st Shift (7:30 AM - 12:30 PM)</td>
+                      <td>₹15,000</td>
+                      <td>₹3,750 / term</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
               <p className="fee-subnote">
-                * Safe Bus & Van facility available for Tilawad Maina and all nearby village routes.
+                * Safe Bus & Van transport available for Tilawad Maina and surrounding villages.
               </p>
             </div>
 
@@ -698,7 +709,7 @@ export default function App() {
       <section id="admission" className="section-padding">
         <div className="full-width-container">
           <div className="section-title-center">
-            <span className="pill-badge">Admissions 2026-2027</span>
+            <span className="pill-badge-dark">Admissions 2026-2027</span>
             <h3>Online Admission Inquiry Form</h3>
             <p>Parents can apply directly online from home:</p>
           </div>
