@@ -19,7 +19,11 @@ import {
   Languages, 
   Menu, 
   X,
-  Sparkles
+  Sparkles,
+  Camera,
+  Image as ImageIcon,
+  Eye,
+  Maximize2
 } from 'lucide-react';
 import logoImg from './assets/grd.jpg';
 import './App.css';
@@ -84,8 +88,70 @@ const studentsData = [
   }
 ];
 
+// School Event & Program Gallery Photos
+const galleryPhotos = [
+  {
+    id: 1,
+    category: 'functions',
+    title: 'Annual Cultural Fest & Dance Performance',
+    tag: 'Annual Function',
+    date: 'February 2026',
+    desc: 'Students showcasing traditional Indian folk dances and musical drama under guidance of teachers.',
+    img: 'https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800&auto=format&fit=crop&q=80'
+  },
+  {
+    id: 2,
+    category: 'sports',
+    title: 'Annual Sports Meet & Athletics Championship',
+    tag: 'Sports Day',
+    date: 'January 2026',
+    desc: 'Exciting 100m sprint, relay race, and volleyball competitions between school house teams.',
+    img: 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=800&auto=format&fit=crop&q=80'
+  },
+  {
+    id: 3,
+    category: 'science',
+    title: 'Science & Innovation Model Exhibition',
+    tag: 'Science Fair',
+    date: 'December 2025',
+    desc: 'Senior students demonstrating working models of solar power, robotics, and environmental conservation.',
+    img: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=800&auto=format&fit=crop&q=80'
+  },
+  {
+    id: 4,
+    category: 'campus',
+    title: 'Interactive Smart Classroom Session',
+    tag: 'Smart Class',
+    date: 'Regular Activity',
+    desc: 'Engaging digital smart board learning for junior and senior classes in English and Hindi mediums.',
+    img: 'https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800&auto=format&fit=crop&q=80'
+  },
+  {
+    id: 5,
+    category: 'functions',
+    title: 'Academic Excellence & Prize Distribution',
+    tag: 'Awards Ceremony',
+    date: 'Annual Program',
+    desc: 'Director Shri Rajendra Verma & Principal Shri Mahesh Verma honoring board exam toppers and achievers.',
+    img: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&auto=format&fit=crop&q=80'
+  },
+  {
+    id: 6,
+    category: 'campus',
+    title: 'Morning Assembly, Yoga & Moral Values Session',
+    tag: 'Morning Routine',
+    date: 'Daily Activity',
+    desc: 'Fostering discipline, physical fitness, mindfulness, and moral character in all students.',
+    img: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=800&auto=format&fit=crop&q=80'
+  }
+];
+
 export default function App() {
   const [navOpen, setNavOpen] = useState(false);
+
+  // Gallery State
+  const [galleryFilter, setGalleryFilter] = useState('all');
+  const [previewImage, setPreviewImage] = useState(null);
 
   // Student Directory Demo State
   const [selectedClass, setSelectedClass] = useState('All');
@@ -114,6 +180,11 @@ export default function App() {
   const filteredList = studentsData.filter(s => 
     selectedClass === 'All' ? true : s.class === selectedClass
   );
+
+  // Filter gallery
+  const filteredGallery = galleryFilter === 'all'
+    ? galleryPhotos
+    : galleryPhotos.filter(p => p.category === galleryFilter);
 
   const handleResultSearch = (e) => {
     e.preventDefault();
@@ -178,6 +249,7 @@ export default function App() {
             <a href="#home" className="nav-link" onClick={() => setNavOpen(false)}>Home</a>
             <a href="#management" className="nav-link" onClick={() => setNavOpen(false)}>Management</a>
             <a href="#shifts-medium" className="nav-link" onClick={() => setNavOpen(false)}>Shifts & Medium</a>
+            <a href="#gallery" className="nav-link" onClick={() => setNavOpen(false)}>Gallery</a>
             <a href="#features" className="nav-link" onClick={() => setNavOpen(false)}>Features</a>
             <a href="#demo" className="nav-link" onClick={() => setNavOpen(false)}>Live Demo</a>
             <a href="#fees" className="nav-link" onClick={() => setNavOpen(false)}>Fees & Uniform</a>
@@ -238,7 +310,7 @@ export default function App() {
 
             <div className="hero-actions">
               <a href="#demo" className="btn-primary">Explore Live Demo 👇</a>
-              <a href="#admission" className="btn-outline">Admission Form</a>
+              <a href="#gallery" className="btn-outline">View School Gallery 📷</a>
             </div>
           </div>
 
@@ -315,8 +387,113 @@ export default function App() {
         </div>
       </section>
 
-      {/* 5. MANAGEMENT SECTION (Director & Principal) */}
-      <section id="management" className="section-padding">
+      {/* 5. GALLERY SECTION WITH INTERACTIVE PHOTO PREVIEW */}
+      <section id="gallery" className="section-padding">
+        <div className="full-width-container">
+          <div className="section-title-center">
+            <span className="pill-badge-dark"><Camera size={14} style={{ verticalAlign: 'middle', marginRight: '4px' }} /> Photo Gallery</span>
+            <h3>School Events, Programs & Campus Life</h3>
+            <p>Click on any photo below to open full-screen preview and details</p>
+          </div>
+
+          {/* Filter Tabs */}
+          <div className="gallery-filter-tabs">
+            <button 
+              type="button" 
+              className={`gallery-tab-btn ${galleryFilter === 'all' ? 'active' : ''}`}
+              onClick={() => setGalleryFilter('all')}
+            >
+              All Photos ({galleryPhotos.length})
+            </button>
+            <button 
+              type="button" 
+              className={`gallery-tab-btn ${galleryFilter === 'functions' ? 'active' : ''}`}
+              onClick={() => setGalleryFilter('functions')}
+            >
+              🎭 Annual Functions & Events
+            </button>
+            <button 
+              type="button" 
+              className={`gallery-tab-btn ${galleryFilter === 'sports' ? 'active' : ''}`}
+              onClick={() => setGalleryFilter('sports')}
+            >
+              🏆 Sports & Athletics
+            </button>
+            <button 
+              type="button" 
+              className={`gallery-tab-btn ${galleryFilter === 'science' ? 'active' : ''}`}
+              onClick={() => setGalleryFilter('science')}
+            >
+              🔬 Science Fair & Tech
+            </button>
+            <button 
+              type="button" 
+              className={`gallery-tab-btn ${galleryFilter === 'campus' ? 'active' : ''}`}
+              onClick={() => setGalleryFilter('campus')}
+            >
+              💻 Smart Classes & Campus
+            </button>
+          </div>
+
+          {/* Gallery Photo Grid */}
+          <div className="gallery-photo-grid">
+            {filteredGallery.map((item) => (
+              <div 
+                key={item.id} 
+                className="gallery-item-card"
+                onClick={() => setPreviewImage(item)}
+              >
+                <div className="gallery-img-wrapper">
+                  <img src={item.img} alt={item.title} loading="lazy" />
+                  <div className="img-hover-overlay">
+                    <span className="zoom-pill"><Maximize2 size={16} /> Click to View</span>
+                  </div>
+                  <span className="photo-tag-pill">{item.tag}</span>
+                </div>
+                <div className="gallery-meta-content">
+                  <h4>{item.title}</h4>
+                  <div className="gallery-date-row">
+                    <span>📅 {item.date}</span>
+                    <span className="view-link">Preview &rarr;</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FULL-SCREEN IMAGE PREVIEW MODAL / LIGHTBOX */}
+      {previewImage && (
+        <div className="lightbox-backdrop" onClick={() => setPreviewImage(null)}>
+          <div className="lightbox-dialog" onClick={(e) => e.stopPropagation()}>
+            <button 
+              type="button" 
+              className="lightbox-close-btn" 
+              onClick={() => setPreviewImage(null)}
+              aria-label="Close Preview"
+            >
+              <X size={22} />
+            </button>
+
+            <div className="lightbox-img-frame">
+              <img src={previewImage.img} alt={previewImage.title} />
+            </div>
+
+            <div className="lightbox-caption-area">
+              <div className="lightbox-header-row">
+                <span className="photo-tag-pill">{previewImage.tag}</span>
+                <span className="lightbox-date">📅 {previewImage.date}</span>
+              </div>
+              <h3>{previewImage.title}</h3>
+              <p>{previewImage.desc}</p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* 6. MANAGEMENT SECTION (Director & Principal) */}
+      <section id="management" className="section-padding bg-white">
         <div className="full-width-container">
           <div className="section-title-center">
             <span className="pill-badge-dark">Leadership</span>
@@ -350,8 +527,8 @@ export default function App() {
         </div>
       </section>
 
-      {/* 6. PROPOSED WEBSITE FEATURES */}
-      <section id="features" className="section-padding bg-white">
+      {/* 7. PROPOSED WEBSITE FEATURES */}
+      <section id="features" className="section-padding">
         <div className="full-width-container">
           <div className="section-title-center">
             <span className="pill-badge-dark">Digital Capabilities</span>
@@ -399,8 +576,8 @@ export default function App() {
         </div>
       </section>
 
-      {/* 7. LIVE WORKING DEMOS */}
-      <section id="demo" className="section-padding">
+      {/* 8. LIVE WORKING DEMOS */}
+      <section id="demo" className="section-padding bg-white">
         <div className="full-width-container">
           <div className="section-title-center">
             <span className="pill-badge-dark">Interactive Prototypes</span>
@@ -630,7 +807,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* 8. FEES & UNIFORM */}
+      {/* 9. FEES & UNIFORM */}
       <section id="fees" className="section-padding bg-white">
         <div className="full-width-container">
           <div className="section-title-center">
@@ -705,7 +882,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* 9. ADMISSION FORM */}
+      {/* 10. ADMISSION FORM */}
       <section id="admission" className="section-padding">
         <div className="full-width-container">
           <div className="section-title-center">
@@ -814,7 +991,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* 10. CONTACT & FOOTER */}
+      {/* 11. CONTACT & FOOTER */}
       <footer id="contact" className="simple-footer">
         <div className="full-width-container footer-grid-simple">
           <div>
