@@ -96,34 +96,6 @@ const studentsData = [
   }
 ];
 
-// Hero Slider Slides Data
-const heroSlides = [
-  {
-    id: 1,
-    image: bannerImg,
-    badge: 'Maa Saraswati Blessings & Toppers',
-    tag: 'Official School Banner & Annual Programs',
-    heading: 'Welcome to G.R.D Public High School',
-    subheading: 'Nurturing Minds with Quality & Values in Tilawad Maina (M.P.)',
-    description: 'Under the visionary leadership of Director Shri Rajendra Verma and Principal Shri Mahesh Verma. Outstanding track record of MP Toppers, disciplined moral values, and vibrant student activities.',
-    shift1: '1st Shift (7th - 12th): 7:30 AM – 12:30 PM',
-    shift2: '2nd Shift (LKG - 6th): 10:00 AM – 5:00 PM',
-    statBadge: '500+ Students • 100% Board Result Record'
-  },
-  {
-    id: 2,
-    image: buildingImg,
-    badge: 'Spacious Campus & Modern Infrastructure',
-    tag: 'School Building & Campus - Tilawad Maina',
-    heading: 'Empowering Students for a Brilliant Future',
-    subheading: 'High-Quality English & Hindi Medium Education with Modern Facilities',
-    description: 'Providing student-centric smart classrooms, experienced teachers, and organized morning and day shifts to ensure personalized attention for every child.',
-    shift1: '1st Shift (7th - 12th): English & Hindi Medium',
-    shift2: '2nd Shift (LKG - 6th): Dedicated Primary Care',
-    statBadge: '25+ Teachers • Smart Digital Portal System'
-  }
-];
-
 // School Event & Program Gallery Photos
 const galleryPhotos = [
   {
@@ -202,17 +174,6 @@ const galleryPhotos = [
 
 export default function App() {
   const [navOpen, setNavOpen] = useState(false);
-  const [activeSlide, setActiveSlide] = useState(0);
-  const [isSliderPaused, setIsSliderPaused] = useState(false);
-
-  // Auto-advance hero slider every 5.5 seconds
-  useEffect(() => {
-    if (isSliderPaused) return;
-    const timer = setInterval(() => {
-      setActiveSlide((prev) => (prev + 1) % heroSlides.length);
-    }, 5500);
-    return () => clearInterval(timer);
-  }, [isSliderPaused]);
 
   // Gallery State
   const [galleryFilter, setGalleryFilter] = useState('all');
@@ -337,200 +298,101 @@ export default function App() {
         </div>
       </header>
 
-      {/* 3. PROMINENT HOME PAGE IMAGE SLIDER (CAROUSEL) */}
-      <section 
-        id="home" 
-        className="main-hero-slider-section"
-        onMouseEnter={() => setIsSliderPaused(true)}
-        onMouseLeave={() => setIsSliderPaused(false)}
-      >
-        <div className="full-width-container">
-          {/* Main Slider Frame */}
-          <div className="school-carousel-wrapper">
-            {/* Slides Track */}
-            <div className="carousel-track">
-              {heroSlides.map((slide, index) => (
-                <div 
-                  key={slide.id} 
-                  className={`carousel-slide ${index === activeSlide ? 'slide-active' : ''}`}
-                >
-                  <div className="carousel-img-holder">
-                    <img 
-                      src={slide.image} 
-                      alt={slide.tag} 
-                      className={`carousel-main-img slide-img-${slide.id}`} 
-                    />
-                  </div>
-
-                  {/* Slide-specific Sleek Overlay (Does NOT block the main banner graphics) */}
-                  {slide.id === 1 ? (
-                    /* Slide 1: Official Banner - Compact Bottom Floating Strip */
-                    <div className="carousel-bottom-strip-overlay">
-                      <div className="banner-strip-pill">
-                        <div className="strip-left-info">
-                          <span className="strip-badge-gold">Session 2026-2027</span>
-                          <span className="strip-badge-blue">📍 Tilawad Maina (M.P.)</span>
-                          <h3 className="strip-title">G.R.D Public High School</h3>
-                          <span className="strip-shifts">
-                            ⏰ 1st Shift: <strong>7:30 AM–12:30 PM</strong> | 2nd Shift: <strong>10:00 AM–5:00 PM</strong>
-                          </span>
-                        </div>
-
-                        <div className="strip-cta-actions">
-                          <a href="#admission" className="btn-strip-primary">
-                            <GraduationCap size={16} /> Online Admission (2026-27)
-                          </a>
-                          <a href="#demo" className="btn-strip-secondary">
-                            Explore Portal 👇
-                          </a>
-                          <button 
-                            type="button" 
-                            className="btn-strip-zoom"
-                            onClick={() => setPreviewImage({
-                              img: slide.image,
-                              title: slide.tag,
-                              desc: slide.description,
-                              tag: slide.badge,
-                              date: 'School Archive'
-                            })}
-                            title="Zoom Full Banner"
-                          >
-                            <Maximize2 size={15} />
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  ) : (
-                    /* Slide 2: Campus Building - Sleek Frosted Glass Info Card */
-                    <div className="carousel-building-overlay">
-                      <div className="building-slide-glass-card">
-                        <div className="caption-badge-row">
-                          <span className="slide-badge gold">📍 Tilawad Maina (M.P.)</span>
-                          <span className="slide-badge red">Admissions Open 2026-27</span>
-                          <span className="slide-badge blue">
-                            <Sparkles size={13} className="inline-icon" /> Spacious Green Campus
-                          </span>
-                        </div>
-
-                        <h2 className="building-slide-title">
-                          Empowering Students for a Brilliant Future
-                        </h2>
-
-                        <p className="building-slide-desc">
-                          Quality English & Hindi Medium education with modern smart classrooms, experienced faculty, and separate shifts.
-                        </p>
-
-                        <div className="building-shifts-row">
-                          <div className="b-shift-item">
-                            <Sunrise size={16} className="text-gold" />
-                            <span><strong>1st Shift:</strong> 7:30 AM – 12:30 PM (7th-12th)</span>
-                          </div>
-                          <div className="b-shift-item">
-                            <Sun size={16} className="text-cyan" />
-                            <span><strong>2nd Shift:</strong> 10:00 AM – 5:00 PM (LKG-6th)</span>
-                          </div>
-                        </div>
-
-                        <div className="carousel-cta-actions">
-                          <a href="#admission" className="btn-carousel-primary">
-                            <GraduationCap size={18} className="inline-icon" /> Apply for Admission (2026-27)
-                          </a>
-                          <a href="#demo" className="btn-carousel-glass">
-                            Explore Smart Demo 👇
-                          </a>
-                          <button 
-                            type="button" 
-                            className="btn-carousel-zoom"
-                            onClick={() => setPreviewImage({
-                              img: slide.image,
-                              title: slide.tag,
-                              desc: slide.description,
-                              tag: slide.badge,
-                              date: 'School Archive'
-                            })}
-                          >
-                            <Maximize2 size={16} className="inline-icon" /> View Full Image
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              ))}
+      {/* 3. HERO SECTION */}
+      <section id="home" className="hero-section">
+        <div className="full-width-container hero-grid">
+          <div className="hero-left">
+            <div className="badge-row">
+              <span className="pill-badge">Tilawad Maina (M.P.)</span>
+              <span className="pill-badge-gold">Session 2026-2027</span>
             </div>
 
-            {/* Navigation Arrows */}
-            <button 
-              type="button" 
-              className="carousel-nav-btn prev-btn"
-              onClick={() => setActiveSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length)}
-              aria-label="Previous Slide"
-              title="Previous Slide"
-            >
-              <ChevronLeft size={30} />
-            </button>
-            <button 
-              type="button" 
-              className="carousel-nav-btn next-btn"
-              onClick={() => setActiveSlide((prev) => (prev + 1) % heroSlides.length)}
-              aria-label="Next Slide"
-              title="Next Slide"
-            >
-              <ChevronRight size={30} />
-            </button>
+            <h2 className="hero-heading">
+              Nurturing Minds with Quality & Values at <span className="highlight-grd">G.R.D Public School</span>
+            </h2>
 
-            {/* Bottom Pagination Switcher */}
-            <div className="carousel-controls-bar">
-              <div className="carousel-dots">
-                {heroSlides.map((s, idx) => (
-                  <button
-                    key={s.id}
-                    type="button"
-                    className={`carousel-dot ${idx === activeSlide ? 'dot-active' : ''}`}
-                    onClick={() => setActiveSlide(idx)}
-                    title={s.tag}
-                  >
-                    <span className="dot-thumb-box">
-                      <img src={s.image} alt={s.tag} />
-                    </span>
-                    <span className="dot-label">
-                      {idx === 0 ? '1. School Banner' : '2. Campus Building'}
-                    </span>
-                  </button>
-                ))}
+            <p className="hero-desc">
+              Under the dedicated leadership of <strong>Director Shri Rajendra Verma</strong> and <strong>Principal Shri Mahesh Verma</strong>. 
+              Offering English & Hindi Medium education with two organized shifts.
+            </p>
+
+            {/* Quick Shift Badges */}
+            <div className="hero-shifts-summary">
+              <div className="h-shift-card">
+                <Sunrise size={18} className="icon-gold" />
+                <div>
+                  <strong>1st Shift (7:30 AM – 12:30 PM):</strong>
+                  <span>Class 7th to 12th</span>
+                </div>
+              </div>
+              <div className="h-shift-card">
+                <Sun size={18} className="icon-blue" />
+                <div>
+                  <strong>2nd Shift (10:00 AM – 5:00 PM):</strong>
+                  <span>Class LKG to 6th</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="hero-actions">
+              <a href="#demo" className="btn-primary">Explore Live Demo 👇</a>
+              <a href="#gallery" className="btn-outline">View School Gallery 📷</a>
+            </div>
+          </div>
+
+          <div className="hero-right">
+            <div className="logo-card premium-hero-card">
+              {/* Top Tag & Status Bar */}
+              <div className="card-top-tag-bar">
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                  <span className="live-pulse-dot"></span>
+                  <span className="card-tag-text">Session 2026-2027</span>
+                </div>
+                <span className="card-tag-badge">MP Board Recognised</span>
               </div>
 
-              <button 
-                type="button" 
-                className="carousel-pause-play"
-                onClick={() => setIsSliderPaused(!isSliderPaused)}
-                title={isSliderPaused ? 'Resume auto play' : 'Pause auto play'}
-              >
-                {isSliderPaused ? <Play size={13} /> : <Pause size={13} />}
-                <span>{isSliderPaused ? 'Paused' : 'Auto Play: 5s'}</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
+              {/* Glowing Logo Frame */}
+              <div className="logo-highlight-circle premium-glow">
+                <div className="logo-inner-ring">
+                  <img src={logoImg} alt="G.R.D Public School Logo" className="big-logo" />
+                </div>
+              </div>
 
-      {/* QUICK STATS & NOTICE TICKER */}
-      <section className="quick-ticker-bar">
-        <div className="full-width-container ticker-flex">
-          <div className="ticker-left">
-            <span className="ticker-badge">📢 LATEST NOTICE:</span>
-            <span className="ticker-text">
-              Admissions Open for Session 2026-2027 | English & Hindi Medium (LKG to 12th) | Tilawad Maina (M.P.)
-            </span>
-          </div>
-          <div className="ticker-stats">
-            <div className="t-stat"><strong>500+</strong> Students</div>
-            <div className="t-stat-div">•</div>
-            <div className="t-stat"><strong>100%</strong> Result</div>
-            <div className="t-stat-div">•</div>
-            <div className="t-stat"><strong>25+</strong> Teachers</div>
-            <div className="t-stat-div">•</div>
-            <div className="t-stat"><strong>2</strong> Shifts</div>
+              {/* School Brand Typography */}
+              <h3 className="card-brand-title">G.R.D PUBLIC SCHOOL</h3>
+              <p className="card-brand-location">
+                <MapPin size={14} className="text-gold" /> Tilawad Maina, Madhya Pradesh
+              </p>
+              
+              {/* Premium Feature Items */}
+              <div className="card-highlights-list premium-list">
+                <div className="c-item-premium">
+                  <span className="check-icon-circle"><CheckCircle2 size={14} /></span>
+                  <div>
+                    <strong>LKG to 10th:</strong> English & Hindi Medium
+                  </div>
+                </div>
+                <div className="c-item-premium">
+                  <span className="check-icon-circle"><CheckCircle2 size={14} /></span>
+                  <div>
+                    <strong>11th & 12th:</strong> Hindi Medium Stream
+                  </div>
+                </div>
+                <div className="c-item-premium">
+                  <span className="check-icon-circle"><CheckCircle2 size={14} /></span>
+                  <div>
+                    <strong>Smart Portal:</strong> SMS Alerts, Records & Results
+                  </div>
+                </div>
+              </div>
+
+              {/* Bottom Quick Admission Action */}
+              <div className="card-bottom-cta">
+                <a href="#admission" className="card-admission-btn">
+                  <GraduationCap size={16} /> Online Admission 2026-27 &rarr;
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
