@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Sparkles, 
   GraduationCap, 
@@ -14,32 +14,105 @@ import {
   CheckCircle2, 
   Calendar,
   Smartphone,
-  School
+  School,
+  ChevronLeft,
+  ChevronRight,
+  Play,
+  Pause,
+  Maximize2
 } from 'lucide-react';
 import logoImg from '../assets/grd.jpg';
+import bannerImg from '../assets/grd-banner.png';
+import buildingImg from '../assets/images1.jpg';
+
+const homeHeroSlides = [
+  {
+    id: 1,
+    image: bannerImg,
+    badge: 'Maa Saraswati Blessings & Highlights',
+    tag: 'Official School Banner & Annual Highlights',
+    heading: 'Welcome to G.R.D Public High School',
+    subheading: 'Nurturing Minds with Quality & Values in Tilawad Maina (M.P.)',
+    description: 'Under the visionary leadership of Director Shri Rajendra Verma and Principal Shri Mahesh Verma. Outstanding track record of MP Toppers, disciplined moral values, and vibrant student activities.'
+  },
+  {
+    id: 2,
+    image: buildingImg,
+    badge: 'Spacious Campus & Infrastructure',
+    tag: 'School Building & Campus - Tilawad Maina',
+    heading: 'Empowering Students for a Brilliant Future',
+    subheading: 'High-Quality English & Hindi Medium Education with Modern Facilities',
+    description: 'Providing student-centric smart classrooms, experienced teachers, and organized morning and day shifts to ensure personalized attention for every child.'
+  }
+];
 
 export default function Home({ onNavigate, openAdmissionModal }) {
+  const [activeSlide, setActiveSlide] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    if (isPaused) return;
+    const interval = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % homeHeroSlides.length);
+    }, 5500);
+    return () => clearInterval(interval);
+  }, [isPaused]);
+
   return (
     <div className="home-section-container">
       {/* Hero Section */}
-      <section className="hero-banner">
-        <div className="hero-bg-overlay"></div>
-        <div className="container hero-content-grid">
+      <section 
+        className="hero-banner hero-slider-container"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
+        <div className="hero-slider-bg-wrapper">
+          {homeHeroSlides.map((slide, index) => (
+            <div 
+              key={slide.id} 
+              className={`hero-slide-bg-item ${index === activeSlide ? 'active' : ''}`}
+            >
+              <img src={slide.image} alt={slide.tag} className="hero-bg-img" />
+            </div>
+          ))}
+        </div>
+        <div className="hero-backdrop-overlay"></div>
+
+        <button 
+          type="button" 
+          className="hero-arrow-btn prev"
+          onClick={() => setActiveSlide((prev) => (prev - 1 + homeHeroSlides.length) % homeHeroSlides.length)}
+          aria-label="Previous Slide"
+        >
+          <ChevronLeft size={28} />
+        </button>
+        <button 
+          type="button" 
+          className="hero-arrow-btn next"
+          onClick={() => setActiveSlide((prev) => (prev + 1) % homeHeroSlides.length)}
+          aria-label="Next Slide"
+        >
+          <ChevronRight size={28} />
+        </button>
+
+        <div className="container hero-content-grid relative-content">
           {/* Left Column: Hero Text */}
-          <div className="hero-text-block">
+          <div className="hero-text-block hero-text-card">
             <div className="hero-badge animate-fade-in">
               <Sparkles size={16} className="text-gold" />
-              <span>Leading Institution in Tilawad Maina (M.P.)</span>
+              <span>{homeHeroSlides[activeSlide].badge}</span>
             </div>
 
             <h1 className="hero-main-title">
-              Empowering Students for a <span className="highlight-text">Brilliant Future</span>
+              {homeHeroSlides[activeSlide].heading}
             </h1>
 
+            <p className="hero-subheading-tagline">
+              {homeHeroSlides[activeSlide].subheading}
+            </p>
+
             <p className="hero-lead-text">
-              Welcome to <strong>GRD Public School, Tilawad Maina</strong>. Under the visionary leadership 
-              of <strong>Director Shri Rajendra Verma</strong> and <strong>Principal Shri Mahesh Verma</strong>, 
-              we are stepping into the next era of high-quality education and complete digital school management.
+              {homeHeroSlides[activeSlide].description}
             </p>
 
             {/* Value Proposition Pills */}
@@ -98,10 +171,21 @@ export default function Home({ onNavigate, openAdmissionModal }) {
 
           {/* Right Column: Interactive School Showcase Card */}
           <div className="hero-visual-block">
-            <div className="school-emblem-card">
+            <div className="school-emblem-card hero-showcase-card">
+              <div className="slide-preview-banner">
+                <img 
+                  src={homeHeroSlides[activeSlide].image} 
+                  alt={homeHeroSlides[activeSlide].tag} 
+                  className="slide-mini-preview-img" 
+                />
+                <div className="slide-banner-caption">
+                  <span className="caption-tag">{homeHeroSlides[activeSlide].tag}</span>
+                </div>
+              </div>
+
               <div className="emblem-header">
                 <div className="live-status-pill">
-                  <span className="ping-dot"></span> Official Website Concept
+                  <span className="ping-dot"></span> Official Website
                 </div>
                 <span className="session-tag">Session 2026-2027</span>
               </div>
@@ -112,6 +196,26 @@ export default function Home({ onNavigate, openAdmissionModal }) {
                 </div>
                 <h3 className="card-school-name">GRD PUBLIC SCHOOL</h3>
                 <p className="card-school-location">Tilawad Maina, Madhya Pradesh</p>
+              </div>
+
+              {/* Instant Slide Switcher Thumbnails */}
+              <div className="slide-thumb-selector">
+                <span className="thumb-label">Switch Slide:</span>
+                <div className="thumb-row">
+                  {homeHeroSlides.map((s, idx) => (
+                    <button
+                      key={s.id}
+                      type="button"
+                      className={`thumb-btn ${idx === activeSlide ? 'active' : ''}`}
+                      onClick={() => setActiveSlide(idx)}
+                    >
+                      <img src={s.image} alt={s.tag} />
+                      <span className="thumb-num">
+                        {idx === 0 ? '1. Banner' : '2. Building'}
+                      </span>
+                    </button>
+                  ))}
+                </div>
               </div>
 
               {/* Pitch Highlights Box */}
@@ -129,19 +233,13 @@ export default function Home({ onNavigate, openAdmissionModal }) {
                   <li>
                     <span className="bullet-check">✓</span>
                     <div>
-                      <strong>Automated Messaging:</strong> Instant WhatsApp/SMS to parents when teacher marks attendance or publishes notice.
+                      <strong>Automated Messaging:</strong> Instant WhatsApp/SMS to parents.
                     </div>
                   </li>
                   <li>
                     <span className="bullet-check">✓</span>
                     <div>
-                      <strong>Online Result Portal:</strong> Parents can view & print report cards anytime with roll number.
-                    </div>
-                  </li>
-                  <li>
-                    <span className="bullet-check">✓</span>
-                    <div>
-                      <strong>Fee Transparency & Dress Code:</strong> Clear structure with fee tracking & uniform guidelines.
+                      <strong>Online Result Portal:</strong> Parents can view & print report cards.
                     </div>
                   </li>
                 </ul>
@@ -158,6 +256,34 @@ export default function Home({ onNavigate, openAdmissionModal }) {
               </div>
             </div>
           </div>
+        </div>
+
+        {/* Bottom Slide Pagination Bar */}
+        <div className="hero-slider-footer-bar">
+          <div className="slider-dots-list">
+            {homeHeroSlides.map((s, idx) => (
+              <button
+                key={idx}
+                type="button"
+                className={`slider-dot-btn ${idx === activeSlide ? 'active' : ''}`}
+                onClick={() => setActiveSlide(idx)}
+              >
+                <span className="dot-indicator"></span>
+                <span className="dot-text">{idx === 0 ? 'Banner & Activities' : 'School Building'}</span>
+              </button>
+            ))}
+          </div>
+
+          <button 
+            type="button" 
+            className="slider-play-pause-btn"
+            onClick={() => setIsPaused(!isPaused)}
+          >
+            {isPaused ? <Play size={14} /> : <Pause size={14} />}
+            <span>{isPaused ? 'Auto Slide: Paused' : 'Auto Slide: Active'}</span>
+          </button>
+        </div>
+      </section>
         </div>
       </section>
 
